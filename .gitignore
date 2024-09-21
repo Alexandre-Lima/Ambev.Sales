@@ -1,0 +1,20 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/Ambev.Sales/FileContentIndex
+/src/Ambev.Sales.Api/bin/Debug/net8.0
+/src/Ambev.Sales.Api/obj
+/.vs/Ambev.Sales/v17
+/src/Ambev.Sales.Domain/bin/Debug/net8.0
+/src/Ambev.Sales.Domain/obj
+/src/Ambev.Sales.Domain.UseCases/bin/Debug/net8.0
+/src/Ambev.Sales.Domain.UseCases/obj
+/src/Ambev.Sales.Repositories/bin/Debug/net8.0
+/src/Ambev.Sales.Repositories/obj
+/src/Ambev.Sales.Shared/bin/Debug/net8.0
+/src/Ambev.Sales.Shared/obj
+/test/Ambev.Sales.IntegrationTest/bin/Debug/net8.0
+/test/Ambev.Sales.IntegrationTest/obj
+/test/Ambev.Sales.UnitTests/bin/Debug/net8.0
+/test/Ambev.Sales.UnitTests/obj
