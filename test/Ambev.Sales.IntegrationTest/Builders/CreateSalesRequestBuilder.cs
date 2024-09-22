@@ -6,12 +6,12 @@ namespace Ambev.Sales.IntegrationTest.Builders
 {
     public class CreateSalesRequestBuilder
     {
-        private readonly CreateSalesRequest _instance;
+        private readonly SalesRequest _instance;
         private static readonly Faker _faker = FakerPtBr.CreateFaker();
 
         public CreateSalesRequestBuilder()
         {
-            _instance = new CreateSalesRequest
+            _instance = new SalesRequest
             {
                 BranchId = Guid.NewGuid(),
                 CustomerId = Guid.NewGuid(),
@@ -44,7 +44,7 @@ namespace Ambev.Sales.IntegrationTest.Builders
             return this;
         }
 
-        public CreateSalesRequest Build()
+        public SalesRequest Build()
         {
             return _instance;
         }
