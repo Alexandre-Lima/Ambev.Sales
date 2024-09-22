@@ -29,7 +29,7 @@ namespace Ambev.Sales.UnitTests.UseCases
         public async Task Execute_ReturnsOk()
         {
             // Arrange
-            var request = new CreateSalesRequestBuilder().Build();
+            var request = new SalesRequestBuilder().Build();
             var result = new SalesResponseBuilder().Build();
 
             _repository
@@ -49,7 +49,7 @@ namespace Ambev.Sales.UnitTests.UseCases
         public async Task Execute_Returns_InternalServerError()
         {
             // Arrange
-            var request = new CreateSalesRequestBuilder().Build();
+            var request = new SalesRequestBuilder().Build();
 
             _repository
               .Setup(repository => repository.CreateSaleAsync(request))
