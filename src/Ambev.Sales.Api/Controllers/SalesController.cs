@@ -34,7 +34,7 @@ namespace Ambev.Sales.Api.Controllers
         }
 
         [HttpPut("{saleId}")]
-        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(SalesResponse))]
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(bool))]
         [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(string))]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError, Type = typeof(string))]
         public async Task<IActionResult> UpdateSales([FromBody] SalesRequest request, string saleId)
