@@ -7,6 +7,7 @@ namespace Ambev.Sales.Api.Configurations
         public static void ConfigureUseCase(this IServiceCollection services)
         {
             services.AddScoped<ICreateSaleUseCase, CreateSaleUseCase>();
+            services.AddScoped<IUpdateSaleUseCase, UpdateSaleUseCase>();
         }
     }
 }
