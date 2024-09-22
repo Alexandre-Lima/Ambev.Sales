@@ -13,8 +13,10 @@ namespace Ambev.Sales.IntegrationTest.Mocks
         {
             var response = new SalesResponseBuilder().Build();
 
-            mock.Setup(x => x.CreateSaleAsync(It.IsAny<CreateSalesRequest>()))
+            mock.Setup(x => x.CreateSaleAsync(It.IsAny<SalesRequest>()))
                 .ReturnsAsync(response);
+
+            mock.Setup(x => x.UpdateSaleAsync(It.IsAny<SalesRequest>(), It.IsAny<string>()));
 
             return mock;
         }

@@ -1,11 +1,9 @@
 ﻿using Afya.Wedoo.IntegrationTest.Configurations;
-using Ambev.Sales.Domain.Entities;
-using Ambev.Sales.Domain.Repositories;
 using Ambev.Sales.IntegrationTest.Builders;
 using Ambev.Sales.IntegrationTest.Configurations;
+using Ambev.Sales.IntegrationTest.Utils;
+using Bogus;
 using FluentAssertions;
-using FluentAssertions.Common;
-using Moq;
 using System.Text;
 using System.Text.Json;
 
@@ -13,6 +11,8 @@ namespace Ambev.Sales.IntegrationTest.Controllers
 {
     public class SalesControllerTest : IntegrationTestBase, IClassFixture<CustomWebApplicationFactory<Program>>
     {
+        private static readonly Faker _faker = FakerPtBr.CreateFaker();
+
         public SalesControllerTest(CustomWebApplicationFactory<Program> factory) : base(factory)
         {
         }
@@ -49,6 +49,47 @@ namespace Ambev.Sales.IntegrationTest.Controllers
 
             // Act
             var response = await _client.PostAsync($"/api/sales", content);
+
+            // Assert
+            response.IsSuccessStatusCode.Should().BeFalse();
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+        }
+
+
+        [Fact]
+        public async Task UpdateSales_ShouldReturnSuccess()
+        {
+            // Arrange
+            var request = new CreateSalesRequestBuilder().Build();
+            var saleId = _faker.Random.String(20);
+
+            var content = new StringContent(
+                JsonSerializer.Serialize(request),
+                Encoding.UTF8, "application/json");
+
+            // Act
+            var response = await _client.PutAsync($"/api/sales/{saleId}", content);
+
+            // Assert
+            response.IsSuccessStatusCode.Should().BeTrue();
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
+        }
+
+        [Fact]
+        public async Task UpdateSales_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var request = new CreateSalesRequestBuilder()
+                .WithSaleNumberIsNull()
+                .Build();
+            var saleId = _faker.Random.String(20);
+
+            var content = new StringContent(
+               JsonSerializer.Serialize(request),
+               Encoding.UTF8, "application/json");
+
+            // Act
+            var response = await _client.PutAsync($"/api/sales/{saleId}", content);
 
             // Assert
             response.IsSuccessStatusCode.Should().BeFalse();

@@ -4,6 +4,8 @@ namespace Ambev.Sales.Domain.Repositories
 {
     public interface ISaleRepository
     {
-        Task<SalesResponse> CreateSaleAsync(CreateSalesRequest request);
+        Task<SalesResponse> CreateSaleAsync(SalesRequest request);
+
+        Task UpdateSaleAsync(SalesRequest request, string saleId);
     }
 }

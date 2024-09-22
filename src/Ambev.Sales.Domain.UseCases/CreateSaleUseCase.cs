@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Ambev.Sales.Domain.UseCases
 {
-    public class CreateSaleUseCase : UseCase<CreateSalesRequest, SalesResponse>, ICreateSaleUseCase
+    public class CreateSaleUseCase : UseCase<SalesRequest, SalesResponse>, ICreateSaleUseCase
     {
         private readonly ISaleRepository _repository;
 
@@ -19,7 +19,7 @@ namespace Ambev.Sales.Domain.UseCases
             _repository = repository;
         }
 
-        protected override async Task<UseCaseResponse<SalesResponse>> OnExecute(CreateSalesRequest request)
+        protected override async Task<UseCaseResponse<SalesResponse>> OnExecute(SalesRequest request)
         {
             var result = await _repository.CreateSaleAsync(request);
             return Created(result);
