@@ -18,4 +18,8 @@
     <ProjectReference Include="..\Ambev.Sales.Shared\Ambev.Sales.Shared.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<InternalsVisibleTo Include="..\..\test\Ambev.Sales.IntegrationTest\Ambev.Sales.IntegrationTest.csproj" />
+	</ItemGroup>
+	
 </Project>
