@@ -4,14 +4,14 @@ using Bogus;
 
 namespace Ambev.Sales.UnitTests.Builders
 {
-    public class CreateSalesRequestBuilder
+    public class SalesRequestBuilder
     {
-        private readonly CreateSalesRequest _instance;
+        private readonly SalesRequest _instance;
         private static readonly Faker _faker = FakerPtBr.CreateFaker();
 
-        public CreateSalesRequestBuilder()
+        public SalesRequestBuilder()
         {
-            _instance = new CreateSalesRequest
+            _instance = new SalesRequest
             {
                 BranchId = Guid.NewGuid(),
                 CustomerId = Guid.NewGuid(),
@@ -38,7 +38,7 @@ namespace Ambev.Sales.UnitTests.Builders
             };
         }
 
-        public CreateSalesRequest Build()
+        public SalesRequest Build()
         {
             return _instance;
         }

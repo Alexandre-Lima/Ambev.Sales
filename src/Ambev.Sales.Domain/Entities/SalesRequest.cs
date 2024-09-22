@@ -1,6 +1,6 @@
 ﻿namespace Ambev.Sales.Domain.Entities
 {
-    public class CreateSalesRequest
+    public class SalesRequest
     {
         public required Guid BranchId { get; set; }
         public required Guid CustomerId { get; set; }

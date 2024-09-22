@@ -3,7 +3,7 @@ using Ambev.Sales.Domain.Shared;
 
 namespace Ambev.Sales.Domain.UseCases
 {
-    public interface ICreateSaleUseCase : IUseCase<SalesRequest, SalesResponse>
+    public interface IUpdateSaleUseCase : IUseCase<(SalesRequest,string), bool>
     {
 
     }
