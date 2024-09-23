@@ -18,16 +18,16 @@ namespace Ambev.Sales.UnitTests.Builders
                 SaleNumber = _faker.Random.String(20),
                 SaleDate = DateTime.Now,
                 TotalSale = _faker.Random.Decimal(),
-                Items = new List<ItemSales>
+                Items = new List<SaleItem>
                 {
                     NewItem()
                 }
             };
         }
 
-        private static ItemSales NewItem()
+        private static SaleItem NewItem()
         {
-            return new ItemSales
+            return new SaleItem
             {
                 ProductsId = Guid.NewGuid(),
                 Quantities = _faker.Random.Decimal(),

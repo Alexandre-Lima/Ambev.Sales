@@ -9,6 +9,7 @@ namespace Ambev.Sales.Api.Configurations
             services.AddScoped<ICreateSaleUseCase, CreateSaleUseCase>();
             services.AddScoped<IUpdateSaleUseCase, UpdateSaleUseCase>();
             services.AddScoped<IDeleteSaleUseCase, DeleteSaleUseCase>();
+            services.AddScoped<ICancelSaleItemUseCase, CancelSaleItemUseCase>();
         }
     }
 }
