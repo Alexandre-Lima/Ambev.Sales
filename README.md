@@ -1,6 +1,6 @@
  # 💸 Protótipo de API de Vendas .NET
 
-A concepção do protótipo de API de vendas .NET adotou os preceitos fundamentais da Clean Architecture, aliados à filosofia do Clean Code e SOLID, aplicando o Git Flow Workflow.
+A concepção do protótipo de API de vendas .NET adotou os preceitos fundamentais da Clean Architecture, aliados à filosofia do Clean Code e SOLID, aplicando o Git Flow.
 O cerne deste projeto reside na estreita representação de uma aplicação para gestão de vendas de forma simplificada.
 
 ## 📝 Instruções para compilar a solução
@@ -43,21 +43,21 @@ Aplicação responsável por gerenciar os testes de unidade dos casos de uso per
 
 #### HealthCheck
 
- ✅ <b>Verificação de disponibilidade do protótipo da API de vendas</b><br/> 
+ ✔️ <b>Verificação de disponibilidade do protótipo da API de vendas</b><br/> 
   GET: /api/healthCheck/ping<br/>
   
 **Sales**
 
- ✅ <b>Criar uma nova venda</b><br/> 
+ ✔️ <b>Criar uma nova venda</b><br/> 
   POST: /api/sales<br/>
 
-✅ <b>Alterar uma venda</b><br/>
+✔️ <b>Alterar uma venda</b><br/>
   PUT: /api/sales/{saleId}<br/>
   
-✅ <b>Cancelar/deletar uma venda</b><br/>
+✔️ <b>Cancelar/deletar uma venda</b><br/>
   DELETE: /api/sales/cancellation/{saleId}<br/>
   
-✅ <b>Cancelar um item de uma venda</b><br/>
+✔️ <b>Cancelar um item de uma venda</b><br/>
   PATCH: /api/sales/cancellation/{saleId}/item<br/> 
 
 ## 🤔 FAQ
@@ -69,7 +69,7 @@ R: Esta API foi construída utilizando o .NET 8, portanto, é necessário ter es
 R: Este projeto não dispõe de um canal de suporte direto.  Caso você enfrente algum problema, por favor, inicie uma discussão para tratar da questão. Se necessário, os administradores poderão converter a discussão em um problema oficial (issue) para ser abordado.
 
 #### Qual é o fluxo de desenvolvimento?
-R: Em nosso projeto, adotamos um modelo de gestão de código que compreende duas principais ramificações: 'master' e 'develop', aplicando o  Git Flow Workflow.
+R: Em nosso projeto, adotamos um modelo de gestão de código que compreende duas principais ramificações: 'master' e 'develop', aplicando o Git Flow como fluxos de trabalho Git.
 
 ## ⚖️ Licença
 

@@ -164,7 +164,7 @@ namespace Ambev.Sales.IntegrationTest.Controllers
         public async Task CancelSalesItem_ShouldReturnBadRequest()
         {
             // Arrange
-            SalesItemRequest item = null;
+            SalesItemRequest? item = null;
 
             var content = new StringContent(
                 JsonSerializer.Serialize(item),

@@ -40,7 +40,7 @@ namespace Ambev.Sales.IntegrationTest.Builders
 
         public SalesRequestBuilder WithSaleNumberIsNull()
         {
-            _instance.SaleNumber = null;
+            _instance.SaleNumber = null!;
             return this;
         }
 
