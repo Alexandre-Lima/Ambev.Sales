@@ -21,7 +21,7 @@ namespace Ambev.Sales.IntegrationTest.Controllers
         public async Task CreateSales_ShouldReturnSuccess()
         {
             // Arrange
-            var request = new CreateSalesRequestBuilder().Build();
+            var request = new SalesRequestBuilder().Build();
 
             var content = new StringContent(
                 JsonSerializer.Serialize(request), 
@@ -39,7 +39,7 @@ namespace Ambev.Sales.IntegrationTest.Controllers
         public async Task CreateSales_ShouldReturnBadRequest()
         {
             // Arrange
-            var request = new CreateSalesRequestBuilder()
+            var request = new SalesRequestBuilder()
                 .WithSaleNumberIsNull()
                 .Build();
 
@@ -60,7 +60,7 @@ namespace Ambev.Sales.IntegrationTest.Controllers
         public async Task UpdateSales_ShouldReturnSuccess()
         {
             // Arrange
-            var request = new CreateSalesRequestBuilder().Build();
+            var request = new SalesRequestBuilder().Build();
             var saleId = _faker.Random.String(20);
 
             var content = new StringContent(
@@ -79,7 +79,7 @@ namespace Ambev.Sales.IntegrationTest.Controllers
         public async Task UpdateSales_ShouldReturnBadRequest()
         {
             // Arrange
-            var request = new CreateSalesRequestBuilder()
+            var request = new SalesRequestBuilder()
                 .WithSaleNumberIsNull()
                 .Build();
             var saleId = _faker.Random.String(20);
@@ -94,6 +94,35 @@ namespace Ambev.Sales.IntegrationTest.Controllers
             // Assert
             response.IsSuccessStatusCode.Should().BeFalse();
             response.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+        }
+
+
+        [Fact]
+        public async Task CancelSales_ShouldReturnSuccess()
+        {
+            // Arrange
+            var saleId = _faker.Random.String(20);
+
+            // Act
+            var response = await _client.DeleteAsync($"/api/sales/cancellation/{saleId}");
+
+            // Assert
+            response.IsSuccessStatusCode.Should().BeTrue();
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
+        }
+
+        [Fact]
+        public async Task CancelSales_ShouldReturnMethodNotAllowed()
+        {
+            // Arrange
+            var saleId = string.Empty;
+
+            // Act
+            var response = await _client.DeleteAsync($"/api/sales/cancellation/{saleId}");
+
+            // Assert
+            response.IsSuccessStatusCode.Should().BeFalse();
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.MethodNotAllowed);
         }
     }
 }

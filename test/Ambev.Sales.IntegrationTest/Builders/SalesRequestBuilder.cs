@@ -4,12 +4,12 @@ using Bogus;
 
 namespace Ambev.Sales.IntegrationTest.Builders
 {
-    public class CreateSalesRequestBuilder
+    public class SalesRequestBuilder
     {
         private readonly SalesRequest _instance;
         private static readonly Faker _faker = FakerPtBr.CreateFaker();
 
-        public CreateSalesRequestBuilder()
+        public SalesRequestBuilder()
         {
             _instance = new SalesRequest
             {
@@ -38,7 +38,7 @@ namespace Ambev.Sales.IntegrationTest.Builders
             };
         }
 
-        public CreateSalesRequestBuilder WithSaleNumberIsNull()
+        public SalesRequestBuilder WithSaleNumberIsNull()
         {
             _instance.SaleNumber = null;
             return this;

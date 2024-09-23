@@ -53,5 +53,37 @@ namespace Ambev.Sales.Repositories
                 throw new Exception(erro.Message);
             }
         }
+
+        public async Task<SalesRequest?> GetSaleAsync(string saleId)
+        {
+            using var response = await _httpClient.GetAsync(new Uri($"{saleId}?meta=false", UriKind.Relative));
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var erro = JsonConvert.DeserializeObject<ErrorMessage>(responseContent)!;
+                throw new Exception(erro.Message);
+            }
+
+            var responseSale = JsonConvert.DeserializeObject<SalesRequest>(responseContent)!;
+            return responseSale;
+        }
+
+        public async Task DeleteSaleAsync(string saleId)
+        {
+            using var response = await _httpClient.DeleteAsync(new Uri(saleId, UriKind.Relative));
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var erro = JsonConvert.DeserializeObject<ErrorMessage>(responseContent)!;
+                throw new Exception(erro.Message);
+            }
+        }
     }
 }
