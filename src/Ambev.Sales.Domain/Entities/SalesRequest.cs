@@ -7,6 +7,6 @@
         public required string SaleNumber { get; set; }
         public required DateTime SaleDate { get; set; }        
         public decimal TotalSale { get; set; }
-        public required IEnumerable<ItemSales> Items { get; set; }
+        public required IEnumerable<SaleItem> Items { get; set; }
     }
 }

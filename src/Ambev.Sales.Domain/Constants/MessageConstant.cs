@@ -6,5 +6,6 @@
         public const string FailedPut = "Ocorreu um erro ao alterar os dados.";
         public const string FailedDelete = "Ocorreu um erro ao remover os dados.";
         public const string NotFound = "Registro não encontrado.";
+        public const string NotFoundItem = "Item não encontrado.";
     }
 }

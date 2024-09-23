@@ -19,7 +19,7 @@ namespace Ambev.Sales.IntegrationTest.Mocks
 
             mock.Setup(x => x.UpdateSaleAsync(It.IsAny<SalesRequest>(), It.IsAny<string>()));
 
-            mock.Setup(x => x.GetSaleAsync(It.IsAny<string>()))
+            mock.Setup(x => x.GetSaleAsync("66efa911acd3cb34a888f8a4"))
                 .ReturnsAsync(request);
 
             mock.Setup(x => x.DeleteSaleAsync(It.IsAny<string>()));
