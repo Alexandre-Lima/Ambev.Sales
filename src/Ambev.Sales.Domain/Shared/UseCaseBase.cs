@@ -48,5 +48,11 @@ namespace Ambev.Sales.Domain.Shared
             var response = new UseCaseResponse<TResponse>();
             return response.SetInternalServerError(errorMessage);
         }
+
+        protected UseCaseResponse<TResponse> NotFound(string errorMessage)
+        {
+            var response = new UseCaseResponse<TResponse>();
+            return response.SetNotFound(errorMessage);
+        }
     }
 }

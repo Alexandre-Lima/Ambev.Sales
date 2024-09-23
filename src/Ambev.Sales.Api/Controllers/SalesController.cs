@@ -2,6 +2,7 @@ using Ambev.Sales.Api.Models;
 using Ambev.Sales.Domain.Entities;
 using Ambev.Sales.Domain.UseCases;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using System.Net;
 
 namespace Ambev.Sales.Api.Controllers
@@ -13,15 +14,18 @@ namespace Ambev.Sales.Api.Controllers
         private readonly IActionResultConverter _actionResultConverter;
         private readonly ICreateSaleUseCase _createSaleUseCase;
         private readonly IUpdateSaleUseCase _updateSaleUseCase;
+        private readonly IDeleteSaleUseCase _deleteSaleUseCase;
 
         public SalesController(
             IActionResultConverter actionResultConverter,
             ICreateSaleUseCase createSaleUseCase,
-            IUpdateSaleUseCase updateSaleUseCase)
+            IUpdateSaleUseCase updateSaleUseCase,
+            IDeleteSaleUseCase deleteSaleUseCase)
         {
             _actionResultConverter = actionResultConverter;
             _createSaleUseCase = createSaleUseCase;
             _updateSaleUseCase = updateSaleUseCase;
+            _deleteSaleUseCase = deleteSaleUseCase;
         }
 
         [HttpPost]
@@ -41,6 +45,16 @@ namespace Ambev.Sales.Api.Controllers
         {
             var saleUpdate = (request, saleId);
             return _actionResultConverter.Convert(await _updateSaleUseCase.Execute(saleUpdate));
+        }
+
+        [HttpDelete("cancellation/{saleId}")]
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(bool))]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(string))]
+        [ProducesResponseType((int)HttpStatusCode.NotFound, Type = typeof(string))]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError, Type = typeof(string))]
+        public async Task<IActionResult> CancelSales([Required] string saleId)
+        {
+            return _actionResultConverter.Convert(await _deleteSaleUseCase.Execute(saleId));
         }
     }
 }

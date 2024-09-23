@@ -30,5 +30,12 @@ namespace Ambev.Sales.Domain.HttpResponse
             ErrorMessage = errorMessage;            
             return this;
         }
+
+        public UseCaseResponse<T> SetNotFound(string errorMessage)
+        {
+            Status = UseCaseResponseKind.NotFound;
+            ErrorMessage = errorMessage;
+            return this;
+        }
     }
 }

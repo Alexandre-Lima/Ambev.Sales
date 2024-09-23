@@ -7,5 +7,9 @@ namespace Ambev.Sales.Domain.Repositories
         Task<SalesResponse> CreateSaleAsync(SalesRequest request);
 
         Task UpdateSaleAsync(SalesRequest request, string saleId);
+
+        Task DeleteSaleAsync(string saleId);
+
+        Task<SalesRequest?> GetSaleAsync(string saleId);
     }
 }
